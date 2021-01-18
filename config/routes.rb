@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     # get "/first_product" => "products#first_product"
     # get "/random_product" => "products#random_product"
     get "/products/:id" => "products#show"
+    post "/products" => "products#create"
   end
 end

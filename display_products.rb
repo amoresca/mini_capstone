@@ -16,7 +16,7 @@ p rows
 table = TTY::Table.new(header: ["Name","Price","Description"], rows: [["a1", "a2", "a3"], ["b1", "b2", "b3"]])
 puts table.render(:ascii)
 
-table = TTY::Table.new(header: ["Name","Price","Description"], rows: rows)
+table = TTY::Table.new(header: ["Name","Price","Description"], rows: [["2021 Calendar", 20, "wall calendar with a cute animal for each month"], ["Cactus Eraser", 2, "Make your dest look cuter with this cactus eraser"]])
 puts table.render(:ascii)
 
 
@@ -26,3 +26,4 @@ puts table.render(:ascii)
 # product = response.parse
 
 # pp product
+
