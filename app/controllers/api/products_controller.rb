@@ -34,4 +34,24 @@ class Api::ProductsController < ApplicationController
     render "show.json.jb"
   end
 
+  def update
+    id = params[:id]
+    @product = Product.find(id)
+
+    @product.name = params[:name] || @product.name
+    @product.price = params[:price] || @product.price
+    @product.image_url = params[:image_url] || @product.image_url
+    @product.description = params[:description] || @product.description
+    @product.save
+
+    render "show.json.jb"
+  end
+
+  def destroy
+    id = params[:id]
+    product = Product.find(id)
+    product.destroy
+    render json: { message: "Product #{id} deleted" }
+  end
+
 end
