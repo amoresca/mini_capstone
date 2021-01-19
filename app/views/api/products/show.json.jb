@@ -2,6 +2,14 @@
   id: @product.id,
   name: @product.name,
   price: @product.price,
+  tax: @product.tax,
+  total: @product.total,
   image_url: @product.image_url,
-  description: @product.description
+  description: @product.description,
+  discounted: @product.is_discounted?,
+  formatted: {
+    price_usd: number_to_currency(@product.price),
+    tax_usd: number_to_currency(@product.tax),
+    total_usd: number_to_currency(@product.total)
+  }
 }
