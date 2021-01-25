@@ -6,11 +6,15 @@
   total: product.total,
   discounted: product.is_discounted?,
   stock: product.stock,
-  image_url: product.image_url,
+  images: product.images,
   description: product.description,
   formatted: {
     price_usd: number_to_currency(product.price),
     tax_usd: number_to_currency(product.tax),
     total_usd: number_to_currency(product.total)
+  },
+  supplier: {
+    name: product.supplier.name,
+    email: product.supplier.email
   }
 }

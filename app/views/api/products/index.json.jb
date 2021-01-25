@@ -1,3 +1,7 @@
 @products.map do |product|
-  render partial: "product.json.jb", locals: { product: product }
+  product_hash = render partial: "product.json.jb", locals: { product: product }
+  product_hash[:images] = product.images.map do |image|
+    render partial: "api/images/image.json.jb", locals: { image: image }
+  end
+  product_hash
 end

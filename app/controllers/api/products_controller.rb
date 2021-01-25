@@ -25,10 +25,18 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       stock: params[:stock],
-      image_url: params[:image_url],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: params[:supplier_id]
     )
+    
     if @product.save
+      if params[:image_url]
+        @image = Image.new(
+          url: params[:image_url],
+          product_id: @product.id
+        )
+        @image.save
+      end
       render "show.json.jb"
     else
       render json: { errors: @product.errors.full_messages }, status: :unprocessable_entity
@@ -48,7 +56,7 @@ class Api::ProductsController < ApplicationController
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
     @product.stock = params[:stock] || @product.stock
-    @product.image_url = params[:image_url] || @product.image_url
+    # @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
 
     if @product.save
