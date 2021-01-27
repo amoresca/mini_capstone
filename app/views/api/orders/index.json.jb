@@ -1,0 +1,5 @@
+@orders.map do |order|
+  order_hash = render partial: "order.json.jb", locals: { order: order }
+  order_hash[:product] = render partial: "api/products/product.json.jb", locals: { product: order.product }
+  order_hash
+end
