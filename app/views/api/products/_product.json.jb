@@ -16,5 +16,6 @@
   supplier: {
     name: product.supplier.name,
     email: product.supplier.email
-  }
+  },
+  categories: product.categories
 }

@@ -1,5 +1,7 @@
 class Api::ProductsController < ApplicationController
 
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
     @products = Product.all
 
@@ -10,6 +12,10 @@ class Api::ProductsController < ApplicationController
     if params[:discount]
       @products = @products.is_discounted?
     end
+
+    # if params[:category]
+    #   @products = @products
+    # end
 
     if params[:sort] && params[:sort_order] == "asc"
       @products = @products.order(:price)
