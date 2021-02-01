@@ -1,8 +1,10 @@
 class Product < ApplicationRecord
 
   belongs_to :supplier
+  
   has_many :images
-  has_many :orders
+  has_many :carted_products
+  has_many :orders, through: :carted_products
   has_many :product_categories
   has_many :categories, through: :product_categories
   
@@ -11,7 +13,19 @@ class Product < ApplicationRecord
   validates :description, length: { in: 10..500 }
   # validates_format_of :image_url, :with => %r{\.(png|jpg|jpeg)$}i, :message => "incorrect file format (must be )", multiline: true
 
-  scope :is_discounted?, -> { where("price < ?", 10) }
+  scope :title_search, ->(search_terms) { where("name ILIKE ?", "%#{search_terms}%") if search_terms }
+
+  scope :discounted, ->(check_discount) { where("price < ?", 10) if check_discount }
+
+  scope :sorted, ->(sort, sort_order) {
+    if sort == "price" && sort_order == "asc"
+      order(price: :asc)
+    elsif sort == "price" && sort_order == "desc"
+      order(price: :desc)
+    else
+      order(id: :asc)
+    end
+  }
   
   def is_discounted?
     price < 10
