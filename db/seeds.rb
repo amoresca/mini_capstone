@@ -1,3 +1,13 @@
+User.create!([
+  {name: "Courtney", email: "courtney@gmail.com", password: "password", admin: false},
+  {name: "Casee", email: "casee@gmail.com", password: "password", admin: true}
+])
+Category.create!([
+  {name: "Stationery"},
+  {name: "Writing Supplies"},
+  {name: "Calendars & Planners"},
+  {name: "Paper"}
+])
 Supplier.create!([
   {name: "Fascinature", email: "info@fascinature.com", phone_number: "111-222-3333"},
   {name: "SimpleTrade", email: "info@simpletrade.com", phone_number: "444-555-6666"}
@@ -9,7 +19,17 @@ Product.create!([
   {name: "Squirrel Greeting Cards", price: "12.0", description: "Set of 4 cards", stock: 0, supplier_id: 1},
   {name: "Fox Journal", price: "6.0", description: "Write down your thoughts in this charming fox journal", stock: 0, supplier_id: 1},
   {name: "2021 Calendar", price: "20.0", description: "Wall calendar with a cute jungle animal for each month.", stock: 0, supplier_id: 1},
-  {name: "Mouse Mousepad", price: "10.0", description: "A mousepad with a mouse on it", stock: 0, supplier_id: 1}
+  {name: "Mouse Mousepad", price: "10.0", description: "A mousepad with a mouse on it", stock: 0, supplier_id: 1},
+  {name: "Test Product", price: "10.0", description: "I have a good feeling about this product", stock: 5, supplier_id: 1},
+  {name: "Another New Product", price: "10.0", description: "This will be deleted later", stock: 200, supplier_id: 1}
+])
+ProductCategory.create!([
+  {product_id: 1, category_id: 3},
+  {product_id: 3, category_id: 2},
+  {product_id: 6, category_id: 1},
+  {product_id: 10, category_id: 2},
+  {product_id: 9, category_id: 3},
+  {product_id: 9, category_id: 4}
 ])
 Image.create!([
   {url: "https://i.etsystatic.com/10321708/r/il/cedf47/2531318321/il_794xN.2531318321_fvs8.jpg", product_id: 3},
@@ -26,5 +46,18 @@ Image.create!([
   {url: "https://i.etsystatic.com/17661688/r/il/da1f34/2582815458/il_1140xN.2582815458_oqev.jpg", product_id: 10},
   {url: "https://i.etsystatic.com/17661688/r/il/e8520c/2582815374/il_1140xN.2582815374_hiyb.jpg", product_id: 10},
   {url: "https://i.etsystatic.com/24692000/r/il/c102de/2762582646/il_1140xN.2762582646_e67q.jpg", product_id: 6},
-  {url: "https://i.etsystatic.com/24692000/r/il/9d6f59/2762582608/il_1140xN.2762582608_o5u9.jpg", product_id: 6}
+  {url: "https://i.etsystatic.com/24692000/r/il/9d6f59/2762582608/il_1140xN.2762582608_o5u9.jpg", product_id: 6},
+  {url: "https://i.etsystatic.com/19765352/r/il/09e60d/1922301506/il_570xN.1922301506_fkj4.jpg", product_id: 13},
+  {url: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2019%2F08%2Fcorgi-dog-name-POPDOGS0819.jpg", product_id: 15},
+  {url: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2019%2F08%2Fcorgi-dog-name-POPDOGS0819.jpg", product_id: 16}
 ])
+# Order.create!([
+#   {user_id: 2, subtotal: "43.0", tax: "3.87", total: "46.87"}
+# ])
+# CartedProduct.create!([
+#   {user_id: 2, product_id: 10, quantity: 5, status: "purchased", order_id: 20},
+#   {user_id: 2, product_id: 3, quantity: 1, status: "purchased", order_id: 20},
+#   {user_id: 2, product_id: 7, quantity: 3, status: "removed", order_id: nil},
+#   {user_id: 2, product_id: 10, quantity: 2, status: "carted", order_id: nil},
+#   {user_id: 2, product_id: 8, quantity: 3, status: "carted", order_id: nil}
+# ])
